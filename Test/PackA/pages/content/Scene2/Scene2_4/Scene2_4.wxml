@@ -1,2 +1,40 @@
 <!--PackA/pages/content/Scene2/Scene2_4/Scene2_4.wxml-->
-<text>PackA/pages/content/Scene2/Scene2_4/Scene2_4.wxml</text>
+
+<view id='Title'>
+  <text>{{article[0].name}}</text>
+</view>
+<view id='ProgressBox'>
+  <view id='Progress1' style="--percent:{{progress.num}};"></view>
+</view>
+<image id='BackgroundImg' src="{{backgroundImage}}"></image>
+<view class="container_content">
+  <text id="content">{{current.Str}}</text>
+</view>
+<button id="nextButton" size='mini' bindtap="onPrintWordbyWord" hidden="{{hideNextButton}}">NexT</button>
+<block wx:if="{{showChoiceButton[2]}}">
+  <van-cell title="{{pop[2].title}}" is-link bind:click="showPopup" data-id="{{2}}" />
+  <van-popup show="{{showPopupButton[2]}}" position="bottom" bind:close="onPopupClose" data-id="{{2}}">
+    <view wx:for="{{pop[2].options}}" wx:key="id" class="viewboxi">
+      <image class="icon" src="/source/3.jpg" hidden="{{item.choose}}"></image>
+      <button id="optionButton" bindtap="onShowRight" data-id="{{index}}">{{index}}. {{item.title}}</button>
+    </view> 
+  </van-popup>
+</block>
+<block wx:if="{{showChoiceButton[1]}}">
+  <van-cell title="{{pop[1].title}}" is-link bind:click="showPopup" data-id="{{1}}" />
+  <van-popup show="{{showPopupButton[1]}}" position="top" bind:close="onPopupClose" data-id="{{1}}"> 
+    <view wx:for="{{pop[1].options}}" wx:key="id" class="viewbox" bindtap="showImg" data-sec="{{1}}" data-id="{{index}}">
+      <image class="img1" src="{{item.url}}" hidden="{{item.hide}}"></image>
+    </view>
+  </van-popup>
+</block>
+<block wx:if="{{showChoiceButton[0]}}">
+  <van-cell title="{{pop[0].title}}" is-link bind:click="showPopup" data-id="{{0}}" />
+  <van-popup show="{{showPopupButton[0]}}" position="top" bind:close="onPopupClose" data-id="{{0}}"> 
+    <view class="viewbox2" bindtap="showImg2">
+      <image class="img2" src="{{pop[0].options[pop[0].showTextNum].url}}"></image>
+    </view>
+  </van-popup>
+</block>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene2/index/index" hidden="{{showBackButton}}">再去做宣传组的任务清单上其他的任务吧！</navigator>
+

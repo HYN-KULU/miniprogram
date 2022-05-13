@@ -7,7 +7,92 @@ function initPerhourChart(canvas, width, height, dpr) {
     devicePixelRatio: dpr // 像素
   });
   canvas.setChart(chart);
-
+  var pages=getCurrentPages();;
+  var currentPage = pages[pages.length - 1];
+  let gamelog=currentPage.data.gamelog
+  console.log(gamelog)
+ 
+  console.log(gamelog.Arttack.rearServiceGroup)
+  var ArttackChildren=[]
+  if (gamelog.Arttack.rearServiceGroup.arrival==true)
+  {
+    var rearServiceGroupChildren={id:2,name:'加入后勤组·乍至',intro:'',
+      children:[]                              
+    }
+    if(gamelog.Arttack.rearServiceGroup.fund==true)
+      {
+        rearServiceGroupChildren.children.push({ id: 3, name: '资金筹备', intro: ''})
+      }
+    if(gamelog.Arttack.rearServiceGroup.place==true)
+        if(gamelog.Arttack.rearServiceGroup.hideLevel==true)  
+           {
+                rearServiceGroupChildren.children.push(  { id: 4, name: '场地定档', intro: '',children:[ { id: 7, name: '隐藏剧情', intro: ''}]
+              },)
+           }
+        else{
+          rearServiceGroupChildren.children.push( { id: 4, name: '场地定档', intro: ''})
+        }
+    if(gamelog.Arttack.rearServiceGroup.teabreak==true)
+        {
+          rearServiceGroupChildren.children.push({ id: 5, name: '茶歇预定', intro: ''})
+        }
+   if(gamelog.Arttack.rearServiceGroup.spendRent==true)
+      {
+        rearServiceGroupChildren.children.push(  { id: 6, name: '采购租借', intro: ''})
+      }
+    ArttackChildren.push(rearServiceGroupChildren)
+  }
+  if (gamelog.Arttack.advocacyGroup.arrival==true)
+  {
+    var advocacyGroupChildren={id: 8, name: '加入宣传组·乍至', intro: '',
+      children:[]                              
+    }
+    if(gamelog.Arttack.advocacyGroup.notification==true)
+      {
+        advocacyGroupChildren.children.push(  { id: 9, name: '六次推送制作', intro: ''})
+      }
+    if(gamelog.Arttack.advocacyGroup.logoPoster==true)
+      {
+        advocacyGroupChildren.children.push({ id: 10, name: 'logo和海报设计', intro: ''})
+      }
+    if(gamelog.Arttack.advocacyGroup.mvFilming==true)
+      {
+        advocacyGroupChildren.children.push( { id: 11, name: 'MV拍摄', intro: ''})
+      }
+    if(gamelog.Arttack.advocacyGroup.propagandaItem==true)
+    {
+      advocacyGroupChildren.children.push({ id: 12, name: '实体宣传品设计', intro: ''})
+    }
+    ArttackChildren.push(advocacyGroupChildren)
+  }
+  if (gamelog.Arttack.programGroup.arrival==true)
+  {
+    var programGroupChildren={ id: 13, name: '加入节目组·乍至', intro: '这是B',
+    children:[]                              
+    }
+    if (gamelog.Arttack.programGroup.dance==true)
+      {
+        programGroupChildren.children.push({ id: 14, name: '舞蹈教学', intro: ''})
+      }
+    if (gamelog.Arttack.programGroup.dresscode==true)
+      {
+        programGroupChildren.children.push( { id: 15, name: 'Dresscode拍摄', intro: ''})
+      }
+    if (gamelog.Arttack.programGroup.partner==true)
+      {
+        programGroupChildren.children.push({ id: 16, name: '舞伴匹配', intro: ''})
+      }
+    if (gamelog.Arttack.programGroup.programs==true)
+      {
+        programGroupChildren.children.push({ id: 17, name: '现场节目', intro: ''})
+      }
+    ArttackChildren.push(programGroupChildren)
+  }
+  var trydata=[
+    { id: 1, name: '引子', intro: '',
+      children: ArttackChildren
+    }]
+  console.log(trydata)
   var option = {
     tooltip: {
       show: true,
@@ -17,6 +102,7 @@ function initPerhourChart(canvas, width, height, dpr) {
         // console.log(params)
         let pages=getCurrentPages();;
         let currentPage = pages[pages.length - 1];
+        console.log(currentPage.data)
         currentPage.setData({
           'display': params.data.id-1
         })
@@ -34,39 +120,7 @@ function initPerhourChart(canvas, width, height, dpr) {
     },
     series: [{
         type: 'tree',
-        data: [
-        { id: 1, name: '引子', intro: '',
-          children: [
-            { id: 2, name: '加入后勤组·乍至', intro: '', 
-              children: [
-                { id: 3, name: '资金筹备', intro: ''},
-                { id: 4, name: '场地定档', intro: '',
-                  children: [
-                    { id: 7, name: '隐藏剧情', intro: ''}
-                  ]
-                },
-                { id: 5, name: '茶歇预定', intro: ''},
-                { id: 6, name: '采购租借', intro: ''}
-              ]
-            },
-            { id: 8, name: '加入宣传组·乍至', intro: '', 
-              children: [
-                { id: 9, name: '六次推送制作', intro: ''},
-                { id: 10, name: 'logo和海报设计', intro: ''},
-                { id: 11, name: 'MV拍摄', intro: ''},
-                { id: 12, name: '实体宣传品设计', intro: ''}
-              ]
-            },
-            { id: 13, name: '加入节目组·乍至', intro: '这是B', 
-              children: [
-                { id: 14, name: '舞蹈教学', intro: ''},
-                { id: 15, name: 'Dresscode拍摄', intro: ''},
-                { id: 16, name: '舞伴匹配', intro: ''},
-                { id: 17, name: '现场节目', intro: ''}
-              ]
-            },
-          ]
-        }],
+        data:trydata ,
 
         top: '5%', left: '5%', bottom: '5%', right: '5%',
         symbolSize: 8,
@@ -101,4 +155,10 @@ Page({
     },
     display: -1,
   },
+  onLoad(options) {
+    console.log(JSON.parse(options.gamelog))
+    this.setData({
+      gamelog:JSON.parse(options.gamelog)
+    })
+   } 
 })

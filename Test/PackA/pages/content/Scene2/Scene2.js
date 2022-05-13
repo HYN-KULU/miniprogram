@@ -1,10 +1,12 @@
 // pages/content/Scene2/Scene2.js
+const db=wx.cloud.database();
 Page({
-
   /**
    * Page initial data
    */
   data: {
+    openid:'',
+    gamelog:{},
     showPopupButton: false,
     showChoiceButton: false, 
     hideNextButton: false,
@@ -43,8 +45,19 @@ Page({
   },
 
 nextScene(){
-  this.setData({
-    showChoiceButton: true
+  var gamelog=this.data.gamelog
+  gamelog.Arttack.advocacyGroup.arrival=true
+  db.collection("GameLog").where({_openid:this.data.openid}).update({
+    data: {
+     gamelog:gamelog
+    },
+    success:res=>{
+      console.log(res.data)
+      this.setData({
+        showChoiceButton: true
+      })
+      console.log(this.data.showChoiceButton)
+    }
   })
 },
 
@@ -110,14 +123,26 @@ onPopupClose() {
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    this.onPrintWordbyWord();
-    var len=0;
-    for (var i=0;i<this.data.article[0].content.length;i++){
-      len+=this.data.article[0].content[i].length;
-    }
+    wx.cloud.callFunction({   name: 'getOpenid',   complete: res => {    console.log("云函数获得的openid：",res.result.openId); var openid=res.result.openId;
     this.setData({
-      'progress.tot': len
+      openid:openid
     })
+    db.collection("GameLog").where({_openid:openid}).get({
+      success:res=>{
+        this.setData({
+          gamelog: res.data[0].gamelog
+        })
+        this.onPrintWordbyWord();
+        var len=0;
+        for (var i=0;i<this.data.article[0].content.length;i++){
+          len+=this.data.article[0].content[i].length;
+        }
+        this.setData({
+          'progress.tot': len
+        })
+      }
+    })
+  }})
   },
 
   /**

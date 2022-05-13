@@ -9,19 +9,24 @@
       "pages": [
         "pages/content/start",
         "pages/content/Scene1/Scene1",
+        "pages/content/Scene1/index/index",
         "pages/content/Scene1/Scene1_1/Scene1_1",
         "pages/content/Scene1/Scene1_2/Scene1_2",
         "pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1",
         "pages/content/Scene1/Scene1_3/Scene1_3",
         "pages/content/Scene1/Scene1_4/Scene1_4",
         "pages/content/Scene2/Scene2",
+        "pages/content/Scene2/index/index",
+        "pages/content/Scene2/Scene2_1/Scene2_1",
+        "pages/content/Scene2/Scene2_2/Scene2_2",
+        "pages/content/Scene2/Scene2_3/Scene2_3",
+        "pages/content/Scene2/Scene2_4/Scene2_4",
         "pages/content/Scene3/Scene3",
+        "pages/content/Scene3/index/index",
         "pages/content/Scene3/Scene3_1/Scene3_1",
         "pages/content/Scene3/Scene3_2/Scene3_2",
         "pages/content/Scene3/Scene3_3/Scene3_3",
-        "pages/content/Scene3/Scene3_4/Scene3_4",
-        "pages/content/Scene1/index/index",
-        "pages/content/Scene3/index/index"
+        "pages/content/Scene3/Scene3_4/Scene3_4"
       ]
     },
     {

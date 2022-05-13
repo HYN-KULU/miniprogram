@@ -1,10 +1,12 @@
 // PackA/pages/content/Scene2/Scene2_1/Scene2_1.js
+const db=wx.cloud.database();
 Page({
-
   /**
    * Page initial data
    */
   data: {
+    openid:'',
+    gamelog:{},
     showPopupButton: false,
     showChoiceButton: false, 
     hideNextButton: false,
@@ -81,7 +83,17 @@ nextScene(){
 },
 
 backScene(){
-  this.setData({ showBackButton: false });
+  var gamelog=this.data.gamelog
+  gamelog.Arttack.advocacyGroup.notification=true
+  db.collection("GameLog").where({_openid:this.data.openid}).update({
+    data: {
+     gamelog:gamelog
+    },
+    success:res=>{
+      console.log(res.data)
+      this.setData({ showBackButton: false });
+    }
+  })
 },
 
 onPrintWordbyWord(){
@@ -261,34 +273,49 @@ dragEnd(e) {
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    this.onPrintWordbyWord();
-    var len=0;
-    for (var i=0;i<this.data.article[0].content.length;i++){
-      len+=this.data.article[0].content[i].length;
-    }
     this.setData({
-      'progress.tot': len
+      hideNextButton:true
     })
-    var list = [
-      { name: "整理节目组的dresscode美图，明确着装要求！开放舞伴匹配小程序！", icon: "" },
-      { name: "奠定宣传风格！开放报名渠道！是否成功的通知形式！缴费渠道！", icon: "" },
-      { name: "开放二轮报名渠道！重申成功通知和缴费渠道！开放主持人报名！", icon: "" },
-      { name: "介绍舞会选用舞种！整理节目组的舞蹈教学视频！预告线下舞培！", icon: "" },
-      { name: "舞会回顾视频发布！工作人员致谢！美美下班！", icon: "" },
-      { name: "舞会MV发布！整理后勤组的场地、茶歇信息！入场流程和注意事项！", icon: "" }
-    ]
-    var tar = [
-      { name: "奠定宣传风格！开放报名渠道！是否成功的通知形式！缴费渠道！", icon: "" },
-      { name: "整理节目组的dresscode美图，明确着装要求！开放舞伴匹配小程序！", icon: "" },
-      { name: "介绍舞会选用舞种！整理节目组的舞蹈教学视频！预告线下舞培！", icon: "" },
-      { name: "开放二轮报名渠道！重申成功通知和缴费渠道！开放主持人报名！", icon: "" },
-      { name: "舞会MV发布！整理后勤组的场地、茶歇信息！入场流程和注意事项！", icon: "" },
-      { name: "舞会回顾视频发布！工作人员致谢！美美下班！", icon: "" }
-    ]
+    wx.cloud.callFunction({   name: 'getOpenid',   complete: res => {    console.log("云函数获得的openid：",res.result.openId); var openid=res.result.openId;
     this.setData({
-      habitList: list,
-      targetList: tar
+      openid:openid
     })
+    db.collection("GameLog").where({_openid:openid}).get({
+      success:res=>{
+        this.setData({
+          gamelog: res.data[0].gamelog
+        })
+        this.onPrintWordbyWord();
+        var len=0;
+        for (var i=0;i<this.data.article[0].content.length;i++){
+          len+=this.data.article[0].content[i].length;
+        }
+        this.setData({
+          'progress.tot': len
+        })
+        var list = [
+          { name: "整理节目组的dresscode美图，明确着装要求！开放舞伴匹配小程序！", icon: "" },
+          { name: "奠定宣传风格！开放报名渠道！是否成功的通知形式！缴费渠道！", icon: "" },
+          { name: "开放二轮报名渠道！重申成功通知和缴费渠道！开放主持人报名！", icon: "" },
+          { name: "介绍舞会选用舞种！整理节目组的舞蹈教学视频！预告线下舞培！", icon: "" },
+          { name: "舞会回顾视频发布！工作人员致谢！美美下班！", icon: "" },
+          { name: "舞会MV发布！整理后勤组的场地、茶歇信息！入场流程和注意事项！", icon: "" }
+        ]
+        var tar = [
+          { name: "奠定宣传风格！开放报名渠道！是否成功的通知形式！缴费渠道！", icon: "" },
+          { name: "整理节目组的dresscode美图，明确着装要求！开放舞伴匹配小程序！", icon: "" },
+          { name: "介绍舞会选用舞种！整理节目组的舞蹈教学视频！预告线下舞培！", icon: "" },
+          { name: "开放二轮报名渠道！重申成功通知和缴费渠道！开放主持人报名！", icon: "" },
+          { name: "舞会MV发布！整理后勤组的场地、茶歇信息！入场流程和注意事项！", icon: "" },
+          { name: "舞会回顾视频发布！工作人员致谢！美美下班！", icon: "" }
+        ]
+        this.setData({
+          habitList: list,
+          targetList: tar
+        })
+      }
+    })
+  }})
   },
 
   /**

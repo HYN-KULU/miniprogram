@@ -4,6 +4,9 @@ const app = getApp()
 const db=wx.cloud.database();
 Page({
   data: {
+    openid:'',
+    gamelog:{},
+    navigateUrl:'',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -45,52 +48,66 @@ Page({
       hasUserInfo: true
     })
   },
-  onLoad: function (options) {
+  onShow(options) {
+    this.setData({
+      hideNextButton:true
+    })
     wx.cloud.callFunction({   name: 'getOpenid',   complete: res => {    console.log("云函数获得的openid：",res.result.openId); var openid=res.result.openId;
+    this.setData({
+      openid:openid
+    })
     db.collection("GameLog").where({_openid:openid}).get({
       success:res=>{
-        console.log(res.data.length)
         if(res.data.length==0)
         {
-          db.collection("GameLog").add({
-            data:{
-              gamelog:{
-                Arttack:{ // 文艺部存档
-                  rearServiceGroup:{ // 后勤组
-                    arrival:false, // 乍至
-                    hideLevel:false, // 隐藏关卡
-                    state:false, // 后勤组是否通关
-                    fund:false, // 资金筹备
-                    place:false, // 场地定档
-                    teabreak:false, // 茶歇预定
-                    spendRent:false // 采购租借
-                  },
-                  advocacyGroup:{ // 宣传组
-                    arrival:false, // 乍至
-                    state:false, // 宣传组是否通关
-                    notification:false, // 推送制作
-                    logoPoster:false, // logo和海报设计
-                    mvFilming:false, // MV拍摄
-                    propagandaItem:false // 实体宣传品设计
-                  },
-                  programGroup:{ // 节目组
-                    arrival:false, // 乍至
-                    state:false, // 节目组是否通关
-                    dance:false, // 舞蹈教学
-                    dresscode:false, // dresscode拍摄
-                    partner:false, // 舞伴匹配
-                    programs:false // 现场节目
-                  }
-                }
+          var gamelog={
+            "Arttack": {
+              "advocacyGroup": {
+                "mvFilming": false,
+                "notification": false,
+                "propagandaItem": false,
+                "state": false,
+                "arrival": false,
+                "logoPoster": false
+              },
+              "programGroup": {
+                "programs": false,
+                "state": false,
+                "arrival": false,
+                "dance": false,
+                "dresscode": false,
+                "partner": false
+              },
+              "rearServiceGroup": {
+                "spendRent": false,
+                "state": false,
+                "teabreak": false,
+                "arrival": false,
+                "fund": false,
+                "hideLevel": false,
+                "place": false
               }
             }
+          }
+          this.setData({
+            navigateUrl:'../../PackB/pages/index/index?gamelog='+JSON.stringify(gamelog)
+          })
+          db.collection("GameLog").add({
+            data:{
+              gamelog:gamelog
+            }
+          })
+        }
+        else
+        {
+          var gamelog=res.data[0].gamelog
+          console.log(gamelog) 
+          this.setData({
+            navigateUrl:'../../PackB/pages/index/index?gamelog='+JSON.stringify(gamelog)
           })
         }
       }
     })
-
-
-
-
-  }})}
+  }})
+  },
 })

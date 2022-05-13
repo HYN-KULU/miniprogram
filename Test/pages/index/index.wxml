@@ -18,7 +18,7 @@
     </block>
   </view>
   <navigator url="/PackA/pages/content/start" open-type="navigate">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackB/pages/index/index" open-type="navigate">目录</navigator>
+  <navigator url="{{navigateUrl}}" open-type="navigate">目录</navigator>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

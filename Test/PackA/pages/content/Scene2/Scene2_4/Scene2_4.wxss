@@ -1,1 +1,59 @@
 /* PackA/pages/content/Scene2/Scene2_4/Scene2_4.wxss */
+
+.viewbox{
+  width: 230rpx;
+  height: 350rpx;
+  float: left;
+  border: 0.01em solid lightblue;
+  margin-block-start: 1%;
+  margin-block-end: 1%;
+  margin-inline-end: 1%;
+  margin-inline-start: 1%;
+}
+
+.img1{
+  width: 230rpx;
+  height: 350rpx;
+  float: left;
+}
+
+.viewbox2{
+  width: 600rpx;
+  height: 300rpx;
+  float: left;
+  border: 0.01em solid lightblue;
+  margin-block-start: 1%;
+  margin-block-end: 1%;
+  margin-inline-end: 8%;
+  margin-inline-start: 9%;
+}
+
+.img2{
+  width: 600rpx;
+  height: 300rpx;
+  float: left;
+}
+
+.viewboxi{
+  border: 0.03em solid black;
+}
+
+.icon{
+  float: left;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+#optionButton{
+  margin-top: 20rpx;
+  margin-left: 50rpx;
+  height: 100rpx;
+  font-size: 0.35cm;
+  background-color: white;
+}
+
+#optionButton::after{
+  border: none;
+}

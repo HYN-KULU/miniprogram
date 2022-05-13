@@ -3,4 +3,4 @@
 <navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene1/Scene1_2/Scene1_2">场地定档</navigator>
 <navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene1/Scene1_3/Scene1_3">茶歇预定</navigator>
 <navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene1/Scene1_4/Scene1_4">设备租借</navigator>
-<navigator id="goButton" open-type="navigate" url="/PackB/pages/index/index">返回目录</navigator>
+<navigator id="goButton" open-type="navigate" url="{{navigateUrl}}">返回目录</navigator>
