@@ -18,6 +18,6 @@
   <navigator url="/PackA/pages/content/Scene3/Scene3" open-type="navigate" hidden="{{12!=display}}">加入节目组·乍至</navigator>
   <navigator url="/PackA/pages/content/Scene3/Scene3_1/Scene3_1" open-type="navigate" hidden="{{13!=display}}">舞蹈教学</navigator>
   <navigator url="/PackA/pages/content/Scene3/Scene3_2/Scene3_2" open-type="navigate" hidden="{{14!=display}}">Dresscode拍摄</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{15!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{16!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3_3/Scene3_3" open-type="navigate" hidden="{{15!=display}}">舞伴匹配</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3_4/Scene3_4" open-type="navigate" hidden="{{16!=display}}">现场节目</navigator>
 </van-cell>

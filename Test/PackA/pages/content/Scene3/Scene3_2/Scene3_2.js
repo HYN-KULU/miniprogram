@@ -13,7 +13,7 @@ Page({
     backgroundImage: '/source/4.jpg',
     article: [
       {
-        id: 0, name: '舞蹈教学',
+        id: 0, name: 'Dresscode拍摄',
         ImageList: [
           '/source/4.jpg',
           '/source/3.jpg',
@@ -21,16 +21,14 @@ Page({
           '/source/3.jpg'
         ],
         content: [
-          '舞会舞会，那现场最重要的环节当然是——跳舞啦！不过小舞我虽然平时喜欢对着镜子跳一跳，但是要真是说起在舞会上和大家一起跳，却是一脸迷茫了......（主人公内心）——节目导，舞蹈教学位是干什么的啊，我我我没学过舞会的舞蹈，能教大家吗？（主人公说）——你这么机灵，学会几支舞不是小菜一碟嘛？哈哈开个玩笑，先别急，我们慢慢解释这个位置的工作，它远不止于你刚刚所认为的，直接手把手教会身边的同学呢！（节目导）——别卖关子嘛，有啥有啥？（主人公说）——首先啦，我们肯定是要选择舞种，而且要考虑到大多数参与者都没有舞蹈基础，参加舞蹈教学的时间有限，这个选舞就要综合考虑到难度、趣味性和观赏性。当然，还要考虑舞会场地规模的限制，还有组织舞蹈秩序的难度......——只有选出了几支符合上面所有要求的舞蹈，我们才能开始考虑实际的教学问题哦！（节目导）——所以呀，这次节目组会议后，我们就开始了一波大海捞针之视频网站的刷，来遴选符合期望的舞蹈（主人公内心）',
-          '我们现在找到四支舞啦，但是由于舞会时长限制只能最终选出三支作为集体舞，综合前面节目导的提示，我们会选哪三支呢？\n选舞就要综合考虑到难度、趣味性和观赏性。当然，还要考虑舞会场地规模的限制，还有组织舞蹈秩序的难度......（先贴链接，等我录屏截个片段）',
-          '经过一番纠结，我们选定了这三支舞作为面向所有参与者的舞蹈（放前三视频的一张截图）接下来就是......怎么教会大家啦！（主人公内心）——我们的舞蹈教学要通过多种渠道开展，前期的线上教学视频和线下教学都是必要的！但是我们也知道不少同学不一定会及时参加这些线上线下的培训，所以现场手把手指导占了我们教学工作的大部分——小舞你觉得，如何高效地完成这大规模的舞蹈教学呢？（节目导）——总不能只有我们节目组几个人吧，恐怕很难hold住全场......所以，我们是不是要先“以先学带动后学”呀，就是先征集一些有舞蹈基础的大佬一起学学好了，再把教学任务平均分配下去（主人公说）——你这个思路是对的，确实应该“以先学带动后学”！所以专找帅哥美女aka节目组的星探功能就要上线咯...我们要着手联系身边这些优秀的同学，邀请他们加入我们舞蹈教学的工作，组成美美领舞团（节目导）',
-          '我们已经联系好领舞团的伙伴们啦，为了学舞教舞有序高效，接下来要做的事情得列个list，排列一个合理的任务先后顺序吧~',
-          '一系列舞蹈教学工作有条不紊地完成咯！我长舒一口气......——这个岗位上，不但学会了几支好看的舞蹈，还结识了领舞团的帅哥美女们，这就是节目组吗，爱了爱了！（主人公内心）'
+          'dresscode是什么啊......我选这个锅可能只是因为这是唯一一个没看懂题目的任务哈哈哈！当然参考了往年的dresscode推送，我大概明白这是舞会着装指导的意思（主人公内心）——哇小舞，你果然是DNA里的，专找帅哥美女，啊不节目组人！这一下子就选到dresscode了！（节目导）——所以dresscode是要干啥嘞？（主人公说）——说正经话啦，就是着装指导，引导大家提前准备好符合舞会要求的服装，比如帅哥的西装和美女的裙子（当然反过来也是没问题的哈哈），我们要通过一篇专门的dresscode推送，展示实例舞会服装的照片（节目导）——所以我是要......找帅哥美女给他们拍照咯，这事我喜欢！（主人公说）——当然，在dresscode拍摄这个关卡中，任务还是不少的呢！（主人公内心）',
+          'Dresscode to do list',
+          'dresscode当天天气有点凉，我在一旁拿着道具跟拍都冻得瑟瑟发抖，真是太辛苦模特们啦！最后成品不负我们的努力，快来欣赏一波吧！（主人公内心）'
         ]
       },
     ],
     pop: {
-      title: '该如何回答呢？',
+      title: '排列一个合理的任务先后顺序吧~',
       options: [],
       showTextNum: 0,
     },
@@ -42,7 +40,7 @@ Page({
     current: {
       Str: '',
       ID: { Now: 0, Cap: 0 },
-      Par: { Now: 0, Cap: 4 }, 
+      Par: { Now: 0, Cap: 2 }, 
       Cnt: 0
     },
   },
@@ -76,7 +74,7 @@ onPrintWordbyWord(){
       tmpCnt=tmpCnt+1;
       if (tmpCnt>=this.data.article[tmpID].content[tmpPar].length){
         clearInterval(Handler);
-        if (this.data.current.Par.Now<this.data.current.Par.Cap&&this.data.current.Par.Now!=3){
+        if (this.data.current.Par.Now<this.data.current.Par.Cap&&this.data.current.Par.Now!=1){
           this.setData({
             'current.Par.Now': this.data.current.Par.Now+1,
             'current.Cnt': 0,
@@ -84,7 +82,7 @@ onPrintWordbyWord(){
             hideNextButton: false
           });
         } 
-        else if (this.data.current.Par.Now==3) {
+        else if (this.data.current.Par.Now==1) {
           this.setData({
             'current.Par.Now': this.data.current.Par.Now+1,
             'current.Cnt': 0,
@@ -190,7 +188,7 @@ dragEnd(e) {
     var top = e.changedTouches[0].clientY - rect.top - 30
     if (top > rect.height) {
       // 底部边界控制：控制克隆项拖拽结束时不会出class=habitlist节点的底部边界
-      top = rect.height - 60
+      top = rect.height - 40
     } else if (top < 0) {
       // 顶部边界控制：控制克隆项拖拽结束时不会出class=habitlist节点的顶部边界
       top = 0
@@ -198,7 +196,7 @@ dragEnd(e) {
     this.setData({
       top: top,
     })
-    var target = parseInt(top / 60)
+    var target = parseInt(top / 40)
     var list = []  //用于备份数据
     if (this.data.startTop > top) {
       //  往上方位置拖拽
@@ -259,30 +257,26 @@ dragEnd(e) {
       'progress.tot': len
     })
     var list = [
-      { name: "预约领舞团排练场地", icon: "" },
-      { name: "公布选取舞蹈和相关资料", icon: "" },
-      { name: "组织线下舞培", icon: "" },
-      { name: "审核前期排练成果", icon: "" },
-      { name: "录制线上舞蹈教学视频", icon: "" },
-      { name: "发布线下舞培推送", icon: "" },
-      { name: "领舞团确定排练时间地点", icon: "" },
-      { name: "舞会场地踩点预排练", icon: "" },
-      { name: "领舞团确定线下舞培时间地点", icon: "" },
-      { name: "现场舞蹈教学", icon: "" },
-      { name: "预约线下舞培场地", icon: "" },
+      { name: "同模特,摄影,场务确定拍摄时间地点", icon: "" },
+      { name: "沟通服装要求", icon: "" },
+      { name: "联系传媒部摄影，拍摄道具租借", icon: "" },
+      { name: "审核模特选取的服装", icon: "" },
+      { name: "联系宣传组制作dresscode推送", icon: "" },
+      { name: "拍摄地点选取踩点", icon: "" },
+      { name: "联系同意上镜的模特", icon: "" },
+      { name: "美美开拍", icon: "" },
+      { name: "后期修图，成片整理", icon: "" }
     ]
     var tar = [
-      { name: "公布选取舞蹈和相关资料", icon: "" },
-      { name: "领舞团确定排练时间地点", icon: "" },
-      { name: "预约领舞团排练场地", icon: "" },
-      { name: "审核前期排练成果", icon: "" },
-      { name: "录制线上舞蹈教学视频", icon: "" },
-      { name: "领舞团确定线下舞培时间地点", icon: "" },
-      { name: "预约线下舞培场地", icon: "" },
-      { name: "发布线下舞培推送", icon: "" },
-      { name: "组织线下舞培", icon: "" },
-      { name: "舞会场地踩点预排练", icon: "" },
-      { name: "现场舞蹈教学", icon: "" },
+      { name: "联系同意上镜的模特", icon: "" },
+      { name: "沟通服装要求", icon: "" },
+      { name: "审核模特选取的服装", icon: "" },
+      { name: "联系传媒部摄影，拍摄道具租借", icon: "" },
+      { name: "拍摄地点选取踩点", icon: "" },
+      { name: "同模特,摄影,场务确定拍摄时间地点", icon: "" },
+      { name: "美美开拍", icon: "" },
+      { name: "后期修图，成片整理", icon: "" },
+      { name: "联系宣传组制作dresscode推送", icon: "" }
     ]
     this.setData({
       habitList: list,
