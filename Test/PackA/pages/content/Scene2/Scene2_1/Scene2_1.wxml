@@ -1,4 +1,4 @@
-<!--PackA/pages/content/Scene3/Scene3_4/Scene3_4.wxml-->
+<!--PackA/pages/content/Scene2/Scene2_1/Scene2_1.wxml-->
 
 <view id='Title'>
   <text>{{article[0].name}}</text>
@@ -14,7 +14,13 @@
 <block wx:if="{{showChoiceButton}}">
   <van-cell title="{{pop.title}}" is-link bind:click="showPopup" />
   <van-popup show="{{ showPopupButton }}" position="bottom" bind:close="onPopupClose">
-    <view  class="page-wrapper">
+  <view id="container-left">
+    <block wx:for="{{pop.options}}" wx:key="id">
+      <van-cell class="left-cell" title="{{item.title}}"></van-cell>
+    </block>
+  </view>
+  <view id="container-right">
+<view  class="page-wrapper">
   <top-title toptitle="排序习惯" backImgFlag="true"></top-title>
   <view class="habitlist">
     <!-- 克隆当前拖拽的项 -->
@@ -48,8 +54,8 @@
     </block>
   </view>
 </view>
+</view>
   </van-popup>
 </block>
-<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene3/index/index" hidden="{{showBackButton}}">再去做节目组的任务清单上其他的任务吧！</navigator>
-
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/index/index" hidden="{{showBackButton}}">再去做宣传组的任务清单上其他的任务吧！</navigator>
 

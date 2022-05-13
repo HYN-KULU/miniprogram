@@ -1,0 +1,6 @@
+<!--PackA/pages/content/Scene2/index/index.wxml-->
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene2/Scene2_1/Scene2_1">六次推送制作</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene2/Scene2_2/Scene2_2">logo和海报设计</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene2/Scene2_3/Scene2_3">MV拍摄</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene2/Scene2_4/Scene2_4">实体宣传品设计</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackB/pages/index/index">返回目录</navigator>

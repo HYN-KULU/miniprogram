@@ -25,9 +25,9 @@ Page({
       title: '看看先做些啥吧',
       options: [
         { id: 0, text: '舞蹈教学', url: '/PackA/pages/content/Scene3/Scene3_1/Scene3_1' },
-        { id: 1, text: 'Dresscode拍摄', url: '/PackA/pages/content/Scene3/Scene3_1/Scene3_2' },
-        { id: 2, text: '舞伴匹配', url: '/PackA/pages/content/Scene3/Scene3_1/Scene3_3' },
-        { id: 3, text: '现场节目', url: '/PackA/pages/content/Scene3/Scene3_1/Scene3_4' }
+        { id: 1, text: 'Dresscode拍摄', url: '/PackA/pages/content/Scene3/Scene3_2/Scene3_2' },
+        { id: 2, text: '舞伴匹配', url: '/PackA/pages/content/Scene3/Scene3_3/Scene3_3' },
+        { id: 3, text: '现场节目', url: '/PackA/pages/content/Scene3/Scene3_4/Scene3_4' }
       ]
     },
     progress: {

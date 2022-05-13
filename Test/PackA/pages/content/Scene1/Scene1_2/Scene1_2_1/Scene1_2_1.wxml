@@ -28,7 +28,7 @@
         <view class="title">{{kelong.name}}</view>
       </view>
       <image class="img"
-        src="/source/drag.jpeg"></image>
+        src="https://636c-cloud1-4gl4jj9w3cb8d273-1311875883.tcb.qcloud.la/drag.jpeg?sign=cfdeb4ac21bfaeeeece9c9cd3970d08c&t=1652420771"></image>
     </view>
     <block wx:for="{{habitList}}" wx:key="name">
       <view class="habit {{selectedIndex==index?'gray':''}}" >
@@ -43,7 +43,7 @@
         <view data-index='{{index}}' catchtouchstart='dragStart' catchtouchmove='dragMove'
           catchtouchend='dragEnd'>
           <image class="img"
-            src="/source/drag.jpeg"></image>
+            src="https://636c-cloud1-4gl4jj9w3cb8d273-1311875883.tcb.qcloud.la/drag.jpeg?sign=cfdeb4ac21bfaeeeece9c9cd3970d08c&t=1652420771"></image>
         </view>
       </view>
     </block>
