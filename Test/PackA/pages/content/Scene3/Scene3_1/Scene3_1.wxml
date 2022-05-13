@@ -50,4 +50,4 @@
 </view>
   </van-popup>
 </block>
-<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/index/index" hidden="{{showBackButton}}">再去做后勤组的任务清单上其他的任务吧！</navigator>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene3/index/index" hidden="{{showBackButton}}">再去做节目组的任务清单上其他的任务吧！</navigator>

@@ -1,5 +1,4 @@
 // PackA/pages/content/Scene3/Scene3_1/Scene3_1.js
-// pages/content/Scene1/Scene1_1/Scene1_1.js
 Page({
 
   /**
@@ -237,7 +236,7 @@ dragEnd(e) {
       selectedIndex:-1,
       showkelong: false
     })
-    console.log(habitList,this.data.targetList,habitList==this.data.targetList);
+    // console.log(habitList,this.data.targetList,habitList==this.data.targetList);
     let flag=true;
     for (let i=0;i<this.data.habitList.length;i++){
       if (this.data.habitList[i].name!=this.data.targetList[i].name) flag=false;
