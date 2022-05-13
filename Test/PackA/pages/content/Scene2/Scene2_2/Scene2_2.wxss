@@ -1,1 +1,58 @@
 /* PackA/pages/content/Scene2/Scene2_2/Scene2_2.wxss */
+
+#BackgroundImgC{
+  width: 450rpx;
+  height: 630rpx;
+  margin-left: 160rpx;
+}
+
+.viewbox{
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+  border: 0.01em solid lightblue;
+  margin-block-start: 1%;
+  margin-block-end: 1%;
+  margin-inline-end: 3%;
+  margin-inline-start: 3%;
+}
+
+.img1{
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+}
+
+.viewbox2{
+  width: 360rpx;
+  height: 480rpx;
+  float: left;
+  border: 0.01em solid lightblue;
+  margin-block-start: 1%;
+  margin-block-end: 1%;
+  margin-inline-end: 25%;
+  margin-inline-start: 28%;
+}
+
+.img2{
+  width: 360rpx;
+  height: 480rpx;
+  float: left;
+}
+
+.viewbox3{
+  width: 240rpx;
+  height: 320rpx;
+  float: left;
+  border: 0.01em solid lightblue;
+  margin-block-start: 1%;
+  margin-block-end: 1%;
+  margin-inline-end: 8%;
+  margin-inline-start: 8%;
+}
+
+.img3{
+  width: 240rpx;
+  height: 320rpx;
+  float: left;
+}

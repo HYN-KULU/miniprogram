@@ -6,24 +6,35 @@
 <view id='ProgressBox'>
   <view id='Progress1' style="--percent:{{progress.num}};"></view>
 </view>
-<image id='BackgroundImg' src="{{backgroundImage}}"></image>
+<image id='BackgroundImg' src="{{backgroundImage}}" hidden="{{!showBG}}"></image>
+<image id='BackgroundImgC' src="{{backgroundImage}}" hidden="{{showBG}}"></image>
 <view class="container_content">
   <text id="content">{{current.Str}}</text>
 </view>
 <button id="nextButton" size='mini' bindtap="onPrintWordbyWord" hidden="{{hideNextButton}}">NexT</button>
-<block wx:if="{{showChoiceButton}}">
-  <van-cell title="{{pop[0].title}}" is-link bind:click="showPopup" />
-  <van-popup show="{{ showPopupButton }}" position="bottom" bind:close="onPopupClose">
-    <block wx:for="{{pop[0].options}}" wx:key="{{id}}">
-      <view class="img1" bindtap="showImg" data-index="{{{sec: 0,id: index}}}">
-        <image src="{{item.url}}" hidden="{{item.hide}}"></image>
-      </view>
-    </block>
+<block wx:if="{{showChoiceButton[0]}}">
+  <van-cell title="{{pop[0].title}}" is-link bind:click="showPopup" data-id="{{0}}" />
+  <van-popup show="{{showPopupButton[0]}}" position="top" bind:close="onPopupClose" data-id="{{0}}"> 
+    <view wx:for="{{pop[0].options}}" wx:key="id" class="viewbox" bindtap="showImg" data-sec="{{0}}" data-id="{{index}}">
+      <image class="img1" src="{{item.url}}" hidden="{{item.hide}}" bindtap="showImg" data-sec="{{0}}" data-id="{{index}}"></image>
+    </view>
   </van-popup>
 </block>
-<van-popup show="{{showPopupText}}" position="bottom" bind:close="onPopupTextClose">
-  <view wx:for="{{pop.options}}" wx:key="id">  
-    <text hidden="{{((item.id==pop.showTextNum)?false:true)}}">{{item.text}}</text>
-  </view> 
-</van-popup>
-<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/index/index" hidden="{{showBackButton}}">再去做宣传组的任务清单上其他的任务吧！</navigator>
+<block wx:if="{{showChoiceButton[1]}}">
+  <van-cell title="{{pop[1].title}}" is-link bind:click="showPopup" data-id="{{1}}" />
+  <van-popup show="{{showPopupButton[1]}}" position="top" bind:close="onPopupClose" data-id="{{1}}"> 
+    <view class="viewbox2" bindtap="showImg2">
+      <image class="img2" src="{{pop[1].options[pop[1].showTextNum].url}}"></image>
+    </view>
+  </van-popup>
+</block>
+
+<block wx:if="{{showChoiceButton[2]}}">
+  <van-cell title="{{pop[2].title}}" is-link bind:click="showPopup" data-id="{{2}}" />
+  <van-popup show="{{showPopupButton[2]}}" position="top" bind:close="onPopupClose" data-id="{{2}}"> 
+    <view wx:for="{{pop[2].options}}" wx:key="id" class="viewbox3" bindtap="showImg" data-sec="{{2}}" data-id="{{index}}">
+      <image class="img3" src="{{item.url}}" hidden="{{item.hide}}"></image>
+    </view>
+  </van-popup>
+</block>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene2/index/index" hidden="{{showBackButton}}">再去做宣传组的任务清单上其他的任务吧！</navigator>

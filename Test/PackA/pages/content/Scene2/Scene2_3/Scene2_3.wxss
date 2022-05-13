@@ -1,1 +1,23 @@
 /* PackA/pages/content/Scene2/Scene2_3/Scene2_3.wxss */
+
+.viewbox{
+  border: 0.03em solid black;
+}
+
+.icon{
+  float: left;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+#optionButton{
+  margin-left: 50rpx;
+  height: 100rpx;
+  background-color: white;
+}
+
+#optionButton::after{
+  border: none;
+}
