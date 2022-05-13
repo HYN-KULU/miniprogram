@@ -1,11 +1,12 @@
 // PackA/pages/content/Scene3/Scene3_1/Scene3_1.js
-// pages/content/Scene1/Scene1_1/Scene1_1.js
+const db=wx.cloud.database();
 Page({
-
   /**
    * Page initial data
    */
   data: {
+    openid:'',
+    gamelog:{},
     showPopupButton: false,
     showChoiceButton: false, 
     hideNextButton: false,
@@ -55,7 +56,18 @@ nextScene(){
 },
 
 backScene(){
-  this.setData({ showBackButton: false });
+  var gamelog=this.data.gamelog
+  gamelog.Arttack.programGroup.dance=true
+  db.collection("GameLog").where({_openid:this.data.openid}).update({
+    data: {
+     gamelog:gamelog
+    },
+    success:res=>{
+      console.log(res.data)
+      this.setData({ showBackButton: false });
+    }
+  })
+ 
 },
 
 onPrintWordbyWord(){
@@ -237,7 +249,7 @@ dragEnd(e) {
       selectedIndex:-1,
       showkelong: false
     })
-    console.log(habitList,this.data.targetList,habitList==this.data.targetList);
+    // console.log(habitList,this.data.targetList,habitList==this.data.targetList);
     let flag=true;
     for (let i=0;i<this.data.habitList.length;i++){
       if (this.data.habitList[i].name!=this.data.targetList[i].name) flag=false;
@@ -251,44 +263,60 @@ dragEnd(e) {
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    this.onPrintWordbyWord();
-    var len=0;
-    for (var i=0;i<this.data.article[0].content.length;i++){
-      len+=this.data.article[0].content[i].length;
-    }
     this.setData({
-      'progress.tot': len
+      hideNextButton:true
     })
-    var list = [
-      { name: "预约领舞团排练场地", icon: "" },
-      { name: "公布选取舞蹈和相关资料", icon: "" },
-      { name: "组织线下舞培", icon: "" },
-      { name: "审核前期排练成果", icon: "" },
-      { name: "录制线上舞蹈教学视频", icon: "" },
-      { name: "发布线下舞培推送", icon: "" },
-      { name: "领舞团确定排练时间地点", icon: "" },
-      { name: "舞会场地踩点预排练", icon: "" },
-      { name: "领舞团确定线下舞培时间地点", icon: "" },
-      { name: "现场舞蹈教学", icon: "" },
-      { name: "预约线下舞培场地", icon: "" },
-    ]
-    var tar = [
-      { name: "公布选取舞蹈和相关资料", icon: "" },
-      { name: "领舞团确定排练时间地点", icon: "" },
-      { name: "预约领舞团排练场地", icon: "" },
-      { name: "审核前期排练成果", icon: "" },
-      { name: "录制线上舞蹈教学视频", icon: "" },
-      { name: "领舞团确定线下舞培时间地点", icon: "" },
-      { name: "预约线下舞培场地", icon: "" },
-      { name: "发布线下舞培推送", icon: "" },
-      { name: "组织线下舞培", icon: "" },
-      { name: "舞会场地踩点预排练", icon: "" },
-      { name: "现场舞蹈教学", icon: "" },
-    ]
+    wx.cloud.callFunction({   name: 'getOpenid',   complete: res => {    console.log("云函数获得的openid：",res.result.openId); var openid=res.result.openId;
     this.setData({
-      habitList: list,
-      targetList: tar
+      openid:openid
     })
+    db.collection("GameLog").where({_openid:openid}).get({
+      success:res=>{
+        this.setData({
+          gamelog: res.data[0].gamelog
+        })
+        this.onPrintWordbyWord();
+        var len=0;
+        for (var i=0;i<this.data.article[0].content.length;i++){
+          len+=this.data.article[0].content[i].length;
+        }
+        this.setData({
+          'progress.tot': len
+        })
+        var list = [
+          { name: "预约领舞团排练场地", icon: "" },
+          { name: "公布选取舞蹈和相关资料", icon: "" },
+          { name: "组织线下舞培", icon: "" },
+          { name: "审核前期排练成果", icon: "" },
+          { name: "录制线上舞蹈教学视频", icon: "" },
+          { name: "发布线下舞培推送", icon: "" },
+          { name: "领舞团确定排练时间地点", icon: "" },
+          { name: "舞会场地踩点预排练", icon: "" },
+          { name: "领舞团确定线下舞培时间地点", icon: "" },
+          { name: "现场舞蹈教学", icon: "" },
+          { name: "预约线下舞培场地", icon: "" },
+        ]
+        var tar = [
+          { name: "公布选取舞蹈和相关资料", icon: "" },
+          { name: "领舞团确定排练时间地点", icon: "" },
+          { name: "预约领舞团排练场地", icon: "" },
+          { name: "审核前期排练成果", icon: "" },
+          { name: "录制线上舞蹈教学视频", icon: "" },
+          { name: "领舞团确定线下舞培时间地点", icon: "" },
+          { name: "预约线下舞培场地", icon: "" },
+          { name: "发布线下舞培推送", icon: "" },
+          { name: "组织线下舞培", icon: "" },
+          { name: "舞会场地踩点预排练", icon: "" },
+          { name: "现场舞蹈教学", icon: "" },
+        ]
+        this.setData({
+          habitList: list,
+          targetList: tar
+        })
+      }
+    })
+  }})
+   
   },
 
 

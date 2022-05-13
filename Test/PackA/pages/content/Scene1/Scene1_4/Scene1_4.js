@@ -1,4 +1,5 @@
 // pages/content/Scene1/Scene1_4/Scene1_4.js
+const db=wx.cloud.database();
 Page({
 
   /**
@@ -55,7 +56,17 @@ nextScene(){
 },
 
 backScene(){
-  this.setData({ showBackButton: false });
+  var gamelog=this.data.gamelog
+  gamelog.Arttack.rearServiceGroup.spendRent=true
+  db.collection("GameLog").where({_openid:this.data.openid}).update({
+    data: {
+     gamelog:gamelog
+    },
+    success:res=>{
+      console.log(res.data)
+      this.setData({ showBackButton: false });
+    }
+  })
 },
 
 onPrintWordbyWord(){
@@ -144,14 +155,29 @@ onPopupClose() {
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    this.onPrintWordbyWord();
-    var len=0;
-    for (var i=0;i<this.data.article[0].content.length;i++){
-      len+=this.data.article[0].content[i].length;
-    }
     this.setData({
-      'progress.tot': len
+      hideNextButton:true
     })
+    wx.cloud.callFunction({   name: 'getOpenid',   complete: res => {    console.log("云函数获得的openid：",res.result.openId); var openid=res.result.openId;
+    this.setData({
+      openid:openid
+    })
+    db.collection("GameLog").where({_openid:openid}).get({
+      success:res=>{
+        this.setData({
+          gamelog: res.data[0].gamelog
+        })
+        this.onPrintWordbyWord();
+        var len=0;
+        for (var i=0;i<this.data.article[0].content.length;i++){
+        len+=this.data.article[0].content[i].length;
+        }
+         this.setData({
+         'progress.tot': len
+         })
+      }
+    })
+  }})
   },
 
   /**

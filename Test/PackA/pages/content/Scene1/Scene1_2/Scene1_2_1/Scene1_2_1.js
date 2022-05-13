@@ -1,14 +1,13 @@
 // pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1.js
-
 //排序组件未加
-
-
+const db=wx.cloud.database();
 Page({
-
   /**
    * Page initial data
    */
   data: {
+    openid:'',
+    gamelog:{},
     showPopupButton: false,
     showChoiceButton: false, 
     hideNextButton: false,
@@ -64,7 +63,17 @@ nextScene(){
 },
 
 backScene(){
-  this.setData({ showBackButton: false });
+  var gamelog=this.data.gamelog
+  gamelog.Arttack.rearServiceGroup.hideLevel=true
+  db.collection("GameLog").where({_openid:this.data.openid}).update({
+    data: {
+     gamelog:gamelog
+    },
+    success:res=>{
+      console.log(res.data)
+      this.setData({ showBackButton: false });
+    }
+  })
 },
 
 onPrintWordbyWord(){
@@ -238,36 +247,49 @@ dragEnd(e) {
     if (flag) this.onPopupClose();
   }).exec();
 },
-
-
   /**
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-    this.onPrintWordbyWord();
-    var len=0;
-    for (var i=0;i<this.data.article[0].content.length;i++){
-      len+=this.data.article[0].content[i].length;
-    }
     this.setData({
-      'progress.tot': len
+      hideNextButton:true
     })
-    var list = [
-      { name: "地理位置（市区中心？靠近公共交通？）", icon: "" },
-      { name: "价格", icon: "" },
-      { name: "附加服务（大巴接送？灯光音响？舞台设置？停车场）", icon: "" }, 
-      { name: "可用面积", icon: "" }
-    ]
-    var tar = [
-      { name: "价格", icon: "" },
-      { name: "地理位置（市区中心？靠近公共交通？）", icon: "" },
-      { name: "可用面积", icon: "" },
-      { name: "附加服务（大巴接送？灯光音响？舞台设置？停车场）", icon: "" }
-    ]
+    wx.cloud.callFunction({   name: 'getOpenid',   complete: res => {    console.log("云函数获得的openid：",res.result.openId); var openid=res.result.openId;
     this.setData({
-      habitList: list,
-      targetList: tar
+      openid:openid
     })
+    db.collection("GameLog").where({_openid:openid}).get({
+      success:res=>{
+        this.setData({
+          gamelog: res.data[0].gamelog
+        })
+        this.onPrintWordbyWord();
+        var len=0;
+        for (var i=0;i<this.data.article[0].content.length;i++){
+          len+=this.data.article[0].content[i].length;
+        }
+        this.setData({
+          'progress.tot': len
+        })
+        var list = [
+          { name: "地理位置（市区中心？靠近公共交通？）", icon: "" },
+          { name: "价格", icon: "" },
+          { name: "附加服务（大巴接送？灯光音响？舞台设置？停车场）", icon: "" }, 
+          { name: "可用面积", icon: "" }
+        ]
+        var tar = [
+          { name: "价格", icon: "" },
+          { name: "地理位置（市区中心？靠近公共交通？）", icon: "" },
+          { name: "可用面积", icon: "" },
+          { name: "附加服务（大巴接送？灯光音响？舞台设置？停车场）", icon: "" }
+        ]
+        this.setData({
+          habitList: list,
+          targetList: tar
+        })
+      }
+    })
+  }})
   },
 
   /**

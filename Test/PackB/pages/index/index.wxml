@@ -8,16 +8,16 @@
   <navigator url="/PackA/pages/content/Scene1/Scene1_1/Scene1_1" open-type="navigate" hidden="{{2!=display}}">资金筹备</navigator>
   <navigator url="/PackA/pages/content/Scene1/Scene1_2/Scene1_2" open-type="navigate" hidden="{{3!=display}}">场地定档</navigator>
   <navigator url="/PackA/pages/content/Scene1/Scene1_3/Scene1_3" open-type="navigate" hidden="{{4!=display}}">茶歇预定</navigator>
-  <navigator url="/PackA/pages/content/Scene1/Scene1_4/Scene1_4" open-type="navigate" hidden="{{5!=display}}">设备租借</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1_4/Scene1_4" open-type="navigate" hidden="{{5!=display}}">采购租借</navigator>
   <navigator url="/PackA/pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1" open-type="navigate" hidden="{{6!=display}}">隐藏剧情</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{7!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{8!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{9!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{10!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{11!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/Scene2/Scene2" open-type="navigate" hidden="{{7!=display}}">加入宣传组·乍至</navigator>
+  <navigator url="/PackA/pages/content/Scene2/Scene2_1/Scene2_1" open-type="navigate" hidden="{{8!=display}}">六次推送制作</navigator>
+  <navigator url="/PackA/pages/content/Scene2/Scene2_2/Scene2_2" open-type="navigate" hidden="{{9!=display}}">logo和海报设计</navigator>
+  <navigator url="/PackA/pages/content/Scene2/Scene2_3/Scene2_3" open-type="navigate" hidden="{{10!=display}}">MV拍摄</navigator>
+  <navigator url="/PackA/pages/content/Scene2/Scene2_4/Scene2_4" open-type="navigate" hidden="{{11!=display}}">实体宣传品设计</navigator>
   <navigator url="/PackA/pages/content/Scene3/Scene3" open-type="navigate" hidden="{{12!=display}}">加入节目组·乍至</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{13!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{14!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{15!=display}}">Demo no.1 舞会台本</navigator>
-  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{16!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3_1/Scene3_1" open-type="navigate" hidden="{{13!=display}}">舞蹈教学</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3_2/Scene3_2" open-type="navigate" hidden="{{14!=display}}">Dresscode拍摄</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3_3/Scene3_3" open-type="navigate" hidden="{{15!=display}}">舞伴匹配</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3_4/Scene3_4" open-type="navigate" hidden="{{16!=display}}">现场节目</navigator>
 </van-cell>

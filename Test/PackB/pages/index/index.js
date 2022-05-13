@@ -46,7 +46,7 @@ function initPerhourChart(canvas, width, height, dpr) {
                   ]
                 },
                 { id: 5, name: '茶歇预定', intro: ''},
-                { id: 6, name: '设备租借', intro: ''}
+                { id: 6, name: '采购租借', intro: ''}
               ]
             },
             { id: 8, name: '加入宣传组·乍至', intro: '', 

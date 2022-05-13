@@ -37,7 +37,7 @@
 .habit .img {
   position: absolute;
   right: 30rpx;
-  margin-top: 30rpx;
+  margin-top: 5rpx;
   width: 60rpx;
   height: 60rpx;
 }
