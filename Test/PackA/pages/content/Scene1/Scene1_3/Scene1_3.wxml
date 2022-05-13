@@ -1,0 +1,27 @@
+<!--pages/content/Scene1/Scene1_3/Scene1_3.wxml-->
+
+<view id='Title'>
+  <text>{{article[0].name}}</text>
+</view>
+<view id='ProgressBox'>
+  <view id='Progress1' style="--percent:{{progress.num}};"></view>
+</view>
+<image id='BackgroundImg' src="{{backgroundImage}}"></image>
+<view class="container_content">
+  <text id="content">{{current.Str}}</text>
+</view>
+<button id="nextButton" size='mini' bindtap="onPrintWordbyWord" hidden="{{hideNextButton}}">NexT</button>
+<block wx:if="{{showChoiceButton}}">
+  <van-cell title="{{pop.title}}" is-link bind:click="showPopup" />
+  <van-popup show="{{ showPopupButton }}" position="bottom" bind:close="onPopupClose">
+    <view wx:for="{{pop.options}}" wx:key="id">
+      <van-cell id="optionButton" title="{{index}}. {{item.title}}" is-link bind:click="onShowText" data-index="{{index}}"/>
+    </view> 
+  </van-popup>
+</block>
+<van-popup show="{{showPopupText}}" position="bottom" bind:close="onPopupTextClose">
+  <view wx:for="{{pop.options}}" wx:key="id">  
+    <text hidden="{{((item.id==pop.showTextNum)?false:true)}}">{{item.text}}</text>
+  </view> 
+</van-popup>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/index/index" hidden="{{showBackButton}}">再去做后勤组的任务清单上其他的任务吧！</navigator>

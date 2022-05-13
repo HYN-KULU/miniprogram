@@ -1,0 +1,23 @@
+<!--pages/content/index/index.wxml-->
+<view class="chart">
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ EChart }}"></ec-canvas>
+</view>
+<van-cell title='跳转至章节：'>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{0!=display}}">引子</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1" open-type="navigate" hidden="{{1!=display}}">加入后勤组·乍至</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1_1/Scene1_1" open-type="navigate" hidden="{{2!=display}}">资金筹备</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1_2/Scene1_2" open-type="navigate" hidden="{{3!=display}}">场地定档</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1_3/Scene1_3" open-type="navigate" hidden="{{4!=display}}">茶歇预定</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1_4/Scene1_4" open-type="navigate" hidden="{{5!=display}}">设备租借</navigator>
+  <navigator url="/PackA/pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1" open-type="navigate" hidden="{{6!=display}}">隐藏剧情</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{7!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{8!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{9!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{10!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{11!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/Scene3/Scene3" open-type="navigate" hidden="{{12!=display}}">加入节目组·乍至</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{13!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{14!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{15!=display}}">Demo no.1 舞会台本</navigator>
+  <navigator url="/PackA/pages/content/start" open-type="navigate" hidden="{{16!=display}}">Demo no.1 舞会台本</navigator>
+</van-cell>

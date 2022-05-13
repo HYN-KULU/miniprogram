@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "subpackages": [
+    {
+      "root": "PackA",
+      "pages": [
+        "pages/content/start",
+        "pages/content/Scene1/Scene1",
+        "pages/content/Scene1/Scene1_1/Scene1_1",
+        "pages/content/Scene1/Scene1_2/Scene1_2",
+        "pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1",
+        "pages/content/Scene1/Scene1_3/Scene1_3",
+        "pages/content/Scene1/Scene1_4/Scene1_4",
+        "pages/content/Scene2/Scene2",
+        "pages/content/Scene3/Scene3",
+        "pages/content/Scene3/Scene3_1/Scene3_1",
+        "pages/content/Scene3/Scene3_2/Scene3_2",
+        "pages/content/Scene3/Scene3_3/Scene3_3",
+        "pages/content/Scene3/Scene3_4/Scene3_4",
+        "pages/content/Scene1/index/index",
+        "pages/content/Scene3/index/index"
+      ]
+    },
+    {
+      "root": "PackB",
+      "pages": [
+        "pages/index/index"
+      ]
+    }
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },  
+  "sitemapLocation": "sitemap.json",
+  "usingComponents":{
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cell": "@vant/weapp/cell/index"
+  }
+}

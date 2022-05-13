@@ -1,0 +1,39 @@
+<!--pages/content/Scene1/Scene1_2/Scene1_2.wxml-->
+
+<view id='Title'>
+  <text>{{article[0].name}}</text>
+</view>
+<view id='ProgressBox'>
+  <view id='Progress1' style="--percent:{{progress.num}};"></view>
+</view>
+<image id='BackgroundImg' src="{{backgroundImage}}"></image>
+<view class="container_content">
+  <text id="content">{{current.Str}}</text>
+</view>
+<button id="nextButton" size='mini' bindtap="onPrintWordbyWord" hidden="{{hideNextButton}}">NexT</button>
+<block wx:if="{{showChoiceButton}}">
+  <van-cell title="{{pop.title}}" is-link bind:click="showPopup" />
+  <van-popup show="{{ showPopupButton }}" position="bottom" bind:close="onPopupClose">
+    <view wx:for="{{pop.options}}" wx:key="id">
+      <van-cell id="optionButton" title="{{index}}. {{item.title}}" is-link bind:click="onShowAnswer" data-index="{{index}}"/>
+    </view> 
+  </van-popup>
+</block>
+<van-popup show="{{showPopupAnswer}}" position="bottom" bind:close="onPopupAnswerClose">
+  <van-cell title="{{pop.options[pop.showTextNum].text1}}" is-link bind:click="onShowText"/>
+</van-popup>
+<van-popup show="{{showPopupText}}" position="bottom" bind:close="onPopupTextClose">
+  <block wx:if="{{pop.showTextNum===1?true:false}}">
+    <van-cell title="{{pop.options[pop.showTextNum].text2}}"/>
+  </block>
+  <block wx:else>
+    <view wx:for="{{pop.options[pop.showTextNum].subOpts}}" wx:key="id">  
+      <van-cell title="{{index}}. {{item.title}}" is-link bind:click="onShowSubText" data-index="{{index}}"/>
+    </view> 
+  </block>
+</van-popup>
+<van-popup show="{{showPopupSubText}}" position="bottom" bind:close="onPopupSubTextClose">
+  <van-cell title="{{pop.options[pop.showTextNum].subOpts[pop.showSubTextNum].text}}"/>
+</van-popup>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/index/index" hidden="{{showBackButton}}">再去做后勤组的任务清单上其他的任务吧！</navigator>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1" hidden="{{showBackButton}}">一条隐藏剧情线已解锁，点击进入</navigator>

@@ -1,0 +1,6 @@
+<!--PackA/pages/content/Scene3/index/index.wxml-->
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene3/Scene3_1/Scene3_1">舞蹈教学</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene3/Scene3_2/Scene3_2">Dresscode拍摄</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene3/Scene3_3/Scene3_3">舞伴匹配</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackA/pages/content/Scene3/Scene3_4/Scene3_4">现场节目</navigator>
+<navigator id="goButton" open-type="navigate" url="/PackB/pages/index/index">返回目录</navigator>

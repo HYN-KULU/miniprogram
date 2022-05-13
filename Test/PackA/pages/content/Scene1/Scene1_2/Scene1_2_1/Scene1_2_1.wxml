@@ -1,0 +1,54 @@
+<!--pages/content/Scene1/Scene1_2/Scene1_2_1/Scene1_2_1.wxml-->
+
+<view id='Title'>
+  <text>{{article[0].name}}</text>
+</view>
+<view id='ProgressBox'>
+  <view id='Progress1' style="--percent:{{progress.num}};"></view>
+</view>
+<image id='BackgroundImg' src="{{backgroundImage}}"></image>
+<view class="container_content">
+  <text id="content">{{current.Str}}</text>
+</view>
+<button id="nextButton" size='mini' bindtap="onPrintWordbyWord" hidden="{{hideNextButton}}">NexT</button>
+<block wx:if="{{showChoiceButton}}">
+  <van-cell title="{{pop.title}}" is-link bind:click="showPopup" />
+  <van-popup show="{{ showPopupButton }}" position="bottom" bind:close="onPopupClose">
+    
+<view  class="page-wrapper">
+  <top-title toptitle="排序习惯" backImgFlag="true"></top-title>
+  <view class="habitlist">
+    <!-- 克隆当前拖拽的项 -->
+    <view class='habit kelong' hidden='{{!showkelong}}' style='top:{{top}}px'>
+      <view class='index'>?</view>
+      <view class="icon">
+        <image class="iconImg" src="{{kelong.icon}}"></image>
+      </view>
+      <view class="info">
+        <view class="title">{{kelong.name}}</view>
+      </view>
+      <image class="img"
+        src="/source/drag.jpeg"></image>
+    </view>
+    <block wx:for="{{habitList}}" wx:key="name">
+      <view class="habit {{selectedIndex==index?'gray':''}}" >
+        <view class='index'>{{index+1}}</view>
+        <view class="icon">
+          <image class="iconImg" src="{{item.icon}}"></image>
+        </view>
+        <view class="info">
+          <view class="title">{{item.name}}</view>
+        </view>
+        <!-- 拖拽节点 -->
+        <view data-index='{{index}}' catchtouchstart='dragStart' catchtouchmove='dragMove'
+          catchtouchend='dragEnd'>
+          <image class="img"
+            src="/source/drag.jpeg"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+  </van-popup>
+</block>
+<navigator id="backButton" open-type="navigate" url="/PackA/pages/content/Scene1/index/index" hidden="{{showBackButton}}">再去做后勤组的任务清单上其他的任务吧！</navigator>

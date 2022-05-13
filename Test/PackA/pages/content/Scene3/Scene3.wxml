@@ -1,0 +1,21 @@
+<!--pages/content/Scene3/Scene3.wxml-->
+
+<view id='Title'>
+  <text>{{article[0].name}}</text>
+</view>
+<view id='ProgressBox'>
+  <view id='Progress1' style="--percent:{{progress.num}};"></view>
+</view>
+<image id='BackgroundImg' src="{{backgroundImage}}"></image>
+<view class="container_content">
+  <text id="content">{{current.Str}}</text>
+</view>
+<button id="nextButton" size='mini' bindtap="onPrintWordbyWord" hidden="{{hideNextButton}}">NexT</button>
+<block wx:if="{{showChoiceButton}}">
+  <van-cell title="{{pop.title}}" is-link bind:click="showPopup" />
+  <van-popup show="{{ showPopupButton }}" position="bottom" bind:close="onPopupClose">
+    <view wx:for="{{pop.options}}" wx:key="id">
+      <navigator id="optionButton" open-type="navigate" url='{{item.url}}'>{{index}}. {{item.text}}</navigator>
+    </view> 
+  </van-popup>
+</block>
